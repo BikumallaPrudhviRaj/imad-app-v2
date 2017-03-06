@@ -21,7 +21,7 @@ app.get('/article-one',function(req,res){
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 });
 var Pool=new Pool(config);
-app.get('test.db',function(req,res){
+app.get('test-db',function(req,res){
     //make a select request
     //return a response with the results
     pool.query('SELECT * from test',function(err,result){
