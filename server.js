@@ -13,14 +13,32 @@ var Pool= require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title:'ARTICLE ONE',
-    heading:'ARTICLE ONE',
-    time: 'Editing this article-one html page at 11:05 pm',
-    content:`<p>
-            My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.
+var articles={
+    'article-one' :{
+        title:'ARTICLE ONE',
+        heading:'ARTICLE ONE',
+        time: 'Editing this article-one html page at 11:05 pm',
+        content:`<p>
+                My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.
         </p>`
     
+},
+    'article-two' :{
+        title:'ARTICLE TWO',
+        heading:'ARTICLE TWO',
+        time: 'Editing this article-two html page at 11:12 pm',
+        content:`<p>
+                My second ever article in this web app.
+        </p>`
+    },
+    'article-three' :{
+        title:'ARTICLE THREE',
+        heading:'ARTICLE THREE',
+        time: 'Editing this article-three html page at 11:17 pm',
+        content:`<p>
+                My third ever article in this web app.
+        </p>`
+    }
 };
 function createtemplate(data){
     var title=data.title;
@@ -57,12 +75,23 @@ function createtemplate(data){
 }
 
 app.get('/', function (req, res) {
-  res.send(createtemplate(articleOne));
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+app.get('/:articleName',function(req,res){
+    //articleName == article-one
+    var articleName=req.params.articleName;
+  res.send(createtemplate(articles[articleName]));
 });
+
+app.get('/ui/style.css', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
+});
+
+app.get('/ui/madi.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+});
+
 /*var Pool=new Pool(config);
 app.get('test-db',function(req,res){
     //make a select request
@@ -75,23 +104,6 @@ app.get('test-db',function(req,res){
        }
     });
 });*/
-
-app.get('/article-two',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
-app.get('/ui/style.css', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-});
-
-app.get('/ui/madi.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
-
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
