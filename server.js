@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool= require('pg').Pool;
 
-var config={
+/*var config={
     user:'bikumallaprudhviraj',
     database:'bikumallaprudhviraj',
     host:'db.imad.hasura-app.io',
@@ -12,7 +12,7 @@ var config={
 };
 var app = express();
 app.use(morgan('combined'));
-
+*/
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 app.get('/article-one',function(req,res){
   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 });
-var Pool=new Pool(config);
+/*var Pool=new Pool(config);
 app.get('test-db',function(req,res){
     //make a select request
     //return a response with the results
@@ -31,7 +31,7 @@ app.get('test-db',function(req,res){
            res.send(JSON.stringify(result.rows));
        }
     });
-});
+});*/
 
 app.get('/article-two',function(req,res){
      res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
