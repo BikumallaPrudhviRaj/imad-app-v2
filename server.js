@@ -9,12 +9,55 @@ var Pool= require('pg').Pool;
     host:'db.imad.hasura-app.io',
     port:'5432',
     password:process.env.DB_PASSWORD
-};
+};*/
 var app = express();
 app.use(morgan('combined'));
-*/
+
+var articleOne={
+    title:'ARTICLE ONE',
+    heading:'ARTICLE ONE',
+    time: 'Editing this article-one html page at 11:05 pm',
+    content:`<p>
+            My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.My first ever article in this web app.
+        </p>`
+    
+};
+function createtemplate(data){
+    var title=data.title;
+    var heading=data.heading;
+    var time=data.time;
+    var content=data.content;
+    var htmltemplate =`
+        <!DOCTYPE html>
+        <head>
+            <title> 
+            ${title}
+            </title>
+            <meta name="viexport" content="width=device-width ,initial-scale =1" />
+             <link href="/ui/style.css" rel="stylesheet" />
+        </head>
+        <body>
+            <div class="container">
+            <div>
+                <a href="/">HOME</a>
+            </div>    
+            <hr/>
+            <h3>
+                ${heading}
+            </h3>
+            <div>
+                ${time}
+            </div>
+            ${content}    
+            </div>
+        </body>
+        </html>
+    `;
+    return htmltemplate;
+}
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(createtemplate(articleOne));
 });
 
 app.get('/article-one',function(req,res){
