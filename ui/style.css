@@ -20,10 +20,11 @@ body {
     height: 200px;
 }
 
-.good{
+.container{
         max-width:800px;
         color:grey;
         font-family:sans-serif;
+        background-color:red;
         margin:0 auto;
         padding-top:60px;
         padding-left:20px;
