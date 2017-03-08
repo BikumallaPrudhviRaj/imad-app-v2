@@ -4,7 +4,7 @@ var element=document.getElementById("main-text");
 element.innerText ='Helloo';
 
 var element=document.getElementById("madi");
-var margin
+var marginleft=0;
 madi.onclick =function(){
     var interval =setinterval(moveRight,100);
 };
