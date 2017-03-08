@@ -1,15 +1,7 @@
-console.log('Loaded!');
-
-var element=document.getElementById("main-text");
-element.innerText ='Helloo';
-
-var element=document.getElementById("madi");
-var marginleft=0;
-madi.onclick =function(){
-    var interval =setinterval(moveRight,100);
+var button =document.getElementById('counter');
+var counter =0;
+button.onclick =function(){
+    counter=counter+1;
+    var span=document.getElementById('count');
+    span.innerHTML=counter.toString();
 };
-function moveRight()
-{
-  marginleft=marginleft+10;
-  img.style.marginleft=marginleft+'px';
-}
