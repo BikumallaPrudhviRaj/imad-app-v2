@@ -5,5 +5,5 @@ element.innerText ='Helloo';
 
 var element=document.getElementById("madi");
 madi.onclick =function(){
-    img.style.marginleft='100px';
+    img.style.marginleft='500px';
 };
