@@ -100,7 +100,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-/*var Pool=new Pool(config);
+var Pool=new Pool(config);
 app.get('test-db',function(req,res){
     //make a select request
     //return a response with the results
@@ -108,10 +108,10 @@ app.get('test-db',function(req,res){
        if(err){
            res.status(500).send(err.toString());
        } else{
-           res.send(JSON.stringify(result.rows));
+           res.send(JSON.stringify(result));
        }
     });
-});*/
+});
 var counter =0;
 app.get('/counter',function(req,res){
     counter =counter +1;
