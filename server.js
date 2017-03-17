@@ -82,6 +82,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var names=[];
+app.get('/submit-name', function (req, res) {
+  var name =req.query.name;
+  names.push(name);
+  res.send(JSON.stringify(names));
+});
+
 app.get('/:articleName',function(req,res){
     //articleName == article-one
     var articleName=req.params.articleName;
@@ -99,14 +106,6 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-
-var names=[];
-app.get('/submit-name', function (req, res) {
-  var name =req.query.name;
-  names.push(name);
-  res.send(JSON.stringify(names));
-});
-
 
 var Pool=new Pool(config);
 app.get('test-db',function(req,res){
