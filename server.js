@@ -11,7 +11,7 @@ var config={
     database:'bikumallaprudhviraj',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    password:'db-bikumallaprudhviraj-16524',
+    password:'db-bikumallaprudhviraj-16524'
 };
 
 var pool=new Pool(config);
