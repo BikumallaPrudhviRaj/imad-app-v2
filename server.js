@@ -54,6 +54,7 @@ var articles={
         </p>`
     }
 };
+
 function createtemplate(data){
     var title=data.title;
     var heading=data.heading;
